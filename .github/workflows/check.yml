@@ -31,3 +31,13 @@ jobs:
         uses: wordpress/plugin-check-action@v1
         with:
           plugin-repo: '.'
+          # Real slug is "tetapi" (matches the Text Domain header) — without
+          # this the action defaults to the GitHub repo directory name
+          # ("wordpress-plugin"), which also trips the trademarked-term
+          # check since "plugin" is a restricted word in real wp.org slugs.
+          slug: 'tetapi'
+          # .github/ and CLAUDE.md never ship in the wp.org submission zip
+          # (that's packaged separately in task 12.3) — exclude them here so
+          # the check reflects what actually gets submitted.
+          exclude-directories: '.git,.github'
+          exclude-files: 'CLAUDE.md'

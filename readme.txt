@@ -2,7 +2,7 @@
 Contributors: tetapi
 Tags: trust, verification, badge, domain verification, security
 Requires at least: 5.8
-Tested up to: 6.6
+Tested up to: 7.0
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv2 or later
@@ -23,10 +23,13 @@ This plugin lets a site owner:
 * Display a verified-entity badge anywhere via the `[tetapi_badge]` shortcode
   or the "TETA+PI Badge" widget.
 
-A $25 Premium Pack (additional badge styles, automatic placement,
-multi-entity support, WooCommerce integration) is planned; this release ships
-the free tier in full and shows what premium unlocks without requiring
-payment to try the plugin.
+This release is 100% free — every feature above is fully functional with no
+payment required. Two premium modules are planned for later: **Module #1
+($25)** — additional badge styles, automatic placement, multi-entity support,
+WooCommerce integration — and **Module #2 ($52)**, a further tier coming
+after that. Neither is for sale yet; the settings page shows what's planned
+and has a field to redeem a free code if TetaPi gives you one (e.g. as a
+thank-you for a social-media shoutout).
 
 Learn more at [tetapi.dev](https://tetapi.dev).
 
@@ -57,8 +60,26 @@ then generate a personal API key from your account settings.
 
 No, it is encrypted at rest using your site's own WordPress salts.
 
+= Do I have to pay for anything? =
+
+No. Every feature in this release is free. Two premium modules are planned
+for later (Module #1 / Module #2) but neither is for sale yet.
+
+= How do I unlock Premium early? =
+
+Premium isn't for sale yet. TetaPi occasionally gives out free redeemable
+codes to early users, e.g. as a thank-you for a social-media shoutout. If you
+have one, enter it under Settings > TETA+PI > Premium to unlock it on your
+site.
+
+== Screenshots ==
+
+1. Settings > TETA+PI — connect your entity with a personal API key.
+2. Domain ownership verification status and controls.
+3. The TETA+PI trust badge, rendered via shortcode.
+
 == Changelog ==
 
 = 1.0.0 =
 * Initial release: settings/connect page, domain ownership verification,
-  badge shortcode + widget, Premium Pack stubs.
+  badge shortcode + widget, Premium module teasers + free promo-code redeem.
