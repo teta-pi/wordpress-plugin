@@ -1,9 +1,10 @@
 # TETA+PI WordPress Plugin — Plan
 
-Task 12.1 (direction 12, wordpress). Connects a WordPress site to a TETA+PI
-entity (`api.tetapi.dev`), proves domain ownership, and displays the resulting
-trust badge. Free tier fully functional, standalone; premium ($25 one-time
-pack) is stubbed behind a license-key field for a later task.
+Task 12.1 (direction 12, wordpress), free-launch copy pass in 12.2. Connects
+a WordPress site to a TETA+PI entity (`api.tetapi.dev`), proves domain
+ownership, and displays the resulting trust badge. Launched 100% free —
+premium modules are teaser-only, unlockable solely via an owner-gifted promo
+code (no payment, see § Premium).
 
 Server-side (`teta-pi/api`, `teta-pi/web`, `teta-pi/mcp`) is untouched — this
 plugin is a pure API client using existing endpoints ([`docs/api.md`](https://github.com/teta-pi/infra/blob/main/docs/api.md),
@@ -68,15 +69,17 @@ for caching). PHP 7.4+ compatible (no enums, no readonly props, no `match`).
 | Entity picker | populated from `GET /businesses` once key is valid |
 | Domain verification status | none / pending / verified, with Start/Check buttons |
 | Badge preview | live preview of the shortcode output |
-| License key (premium) | optional field, unlocks premium sections when valid — validation stubbed (§ Premium) |
+| Redeem code (premium) | optional field, flips `Tetapi_Premium::is_licensed()` true when it matches a promo code hash — no payment, gift-only (§ Premium) |
 
-## $25 Premium Pack — proposed contents (stub only in this task)
+## Premium modules — proposed contents (teaser only, 12.2 free launch)
 
-One-time $25 purchase (Gumroad/Lemon Squeezy license key, no payment code in
-this repo — the plugin only ever *checks* a license key against a stub
-function that returns "not implemented" for now). Sold separately from the
-TETA+PI platform itself; distribution/checkout mechanics are a direction-13
-GTM decision, not built here.
+**Owner decision 2026-07-14: launched 100% free, zero payment code.** Module
+#1 ($25) and Module #2 ($52) are teased as "coming soon" in the settings page
+and `readme.txt`; neither is for sale. The only unlock path is a promo code
+the plugin owner hands out manually (e.g. as a social-media reward) — checked
+locally against a SHA-256 hash in `class-tetapi-premium.php`, no license
+server, no payment provider. Distribution/checkout mechanics for an eventual
+paid launch are a direction-13 GTM decision, not built here.
 
 1. **Badge style pack** — 5 additional badge layouts (compact pill, card with
    description, footer strip, floating corner ribbon) instead of the one free
@@ -97,11 +100,12 @@ GTM decision, not built here.
 6. **Priority badge refresh** — shorter transient TTL (near-live trust_level)
    instead of the free tier's 15-minute cache.
 
-All six are represented in this task only as disabled UI ("🔒 Coming with
-Premium — enter a license key to unlock") behind `class-tetapi-premium.php`,
-which exposes a single `Tetapi_Premium::is_licensed()` stub returning `false`.
-No license-server calls, no payment/checkout code, nothing that phones home
-beyond the existing `api.tetapi.dev` client.
+All six are represented as disabled UI ("🔒 Module #1 — $25, coming soon")
+behind `class-tetapi-premium.php`. `Tetapi_Premium::is_licensed()` stays
+false by default and only flips true if the site owner enters a code
+matching a hash in a hardcoded, owner-maintained list — no license-server
+calls, no payment/checkout code, nothing that phones home beyond the
+existing `api.tetapi.dev` client.
 
 ## Plugin Check / wp.org readiness
 

@@ -116,13 +116,20 @@ $status_messages = array(
 		<?php settings_fields( Tetapi_Settings::OPTION_GROUP ); ?>
 		<table class="form-table" role="presentation">
 			<tr>
-				<th scope="row"><label for="tetapi_license_key"><?php esc_html_e( 'License Key', 'tetapi' ); ?></label></th>
+				<th scope="row"><label for="tetapi_license_key"><?php esc_html_e( 'Redeem Code', 'tetapi' ); ?></label></th>
 				<td>
-					<input type="text" id="tetapi_license_key" name="tetapi_license_key" class="regular-text" value="<?php echo esc_attr( get_option( 'tetapi_license_key', '' ) ); ?>" placeholder="<?php esc_attr_e( 'Enter your $25 Premium Pack license key', 'tetapi' ); ?>" />
+					<input type="text" id="tetapi_license_key" name="tetapi_license_key" class="regular-text" value="<?php echo esc_attr( get_option( 'tetapi_license_key', '' ) ); ?>" placeholder="<?php esc_attr_e( 'Have a redeemable code? Enter it here', 'tetapi' ); ?>" />
+					<?php if ( Tetapi_Premium::is_licensed() ) : ?>
+						<p class="description tetapi-premium-status tetapi-premium-status--ok">✅ <?php esc_html_e( 'Premium unlocked on this site.', 'tetapi' ); ?></p>
+					<?php elseif ( get_option( 'tetapi_license_key', '' ) ) : ?>
+						<p class="description tetapi-premium-status tetapi-premium-status--bad"><?php esc_html_e( 'That code is not valid.', 'tetapi' ); ?></p>
+					<?php else : ?>
+						<p class="description"><?php esc_html_e( 'Premium is not for sale yet. Early users may receive a free redeemable code via TetaPi\'s social channels.', 'tetapi' ); ?></p>
+					<?php endif; ?>
 				</td>
 			</tr>
 		</table>
-		<?php submit_button( __( 'Save License Key', 'tetapi' ) ); ?>
+		<?php submit_button( __( 'Save Code', 'tetapi' ) ); ?>
 	</form>
 
 	<?php Tetapi_Premium::render_locked_sections(); ?>
