@@ -5,8 +5,9 @@ entity (`api.tetapi.dev`), proves domain ownership, and displays the resulting
 trust badge. Free tier fully functional, standalone; premium ($25 one-time
 pack) is stubbed behind a license-key field for a later task.
 
-Server-side (`api/`, `web/`, `mcp/`) is untouched — this plugin is a pure API
-client using existing endpoints (`docs/api.md`, `docs/verification-rework.md` §2).
+Server-side (`teta-pi/api`, `teta-pi/web`, `teta-pi/mcp`) is untouched — this
+plugin is a pure API client using existing endpoints ([`docs/api.md`](https://github.com/teta-pi/infra/blob/main/docs/api.md),
+[`docs/verification-rework.md`](https://github.com/teta-pi/infra/blob/main/docs/verification-rework.md) §2 in `teta-pi/infra`).
 
 ## Why WordPress
 
@@ -41,7 +42,7 @@ for caching). PHP 7.4+ compatible (no enums, no readonly props, no `match`).
 ## Data flow
 
 1. **Connect** — owner pastes their `pk_live_…` personal API key
-   (`docs/api.md` Auth). Plugin calls `GET /businesses` with that key as
+   ([`docs/api.md`](https://github.com/teta-pi/infra/blob/main/docs/api.md) Auth). Plugin calls `GET /businesses` with that key as
    Bearer to list the user's owned entities, owner picks one, we store
    `entity_id` + `entity_slug` + the key (encrypted at rest via WP's
    `AUTH_KEY` salt, not plaintext) in `wp_options`.
@@ -117,8 +118,8 @@ beyond the existing `api.tetapi.dev` client.
 
 ## Out of scope (this task)
 
-- Any change to `api/`, `web/`, `mcp/`.
+- Any change to `teta-pi/api`, `teta-pi/web`, `teta-pi/mcp`.
 - Actual premium license validation / payment processing.
 - Document-upload verification (not implemented server-side yet, per
-  `docs/verification-rework.md` §2).
+  [`docs/verification-rework.md`](https://github.com/teta-pi/infra/blob/main/docs/verification-rework.md) §2).
 - Cron-based auto re-verification (server capacity constraint).

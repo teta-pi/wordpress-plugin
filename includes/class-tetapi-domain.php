@@ -2,7 +2,7 @@
 /**
  * Domain Ownership verification: serves /.well-known/tetapi-verify.txt via a
  * rewrite rule, and drives the start/check calls against the API (same
- * mechanism described in docs/verification-rework.md §2).
+ * mechanism described in teta-pi/infra's docs/verification-rework.md §2).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
