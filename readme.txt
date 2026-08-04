@@ -76,10 +76,16 @@ site.
 
 1. Settings > TETA+PI — connect your entity with a personal API key.
 2. Domain ownership verification status and controls.
-3. The TETA+PI trust badge, rendered via shortcode.
+3. The TETA+PI trust badge, rendered via the `[tetapi_badge]` shortcode on a page.
+4. The "TETA+PI Badge" widget added to a sidebar.
 
 == Changelog ==
 
 = 1.0.0 =
 * Initial release: settings/connect page, domain ownership verification,
   badge shortcode + widget, Premium module teasers + free promo-code redeem.
+
+== Upgrade Notice ==
+
+= 1.0.0 =
+Initial release.
