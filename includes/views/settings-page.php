@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$status_messages = array(
+$tetapi_status_messages = array(
 	'started'        => __( 'Verification started — add the DNS record or wait a moment for the well-known file, then click Check.', 'tetapi' ),
 	'verified'       => __( 'Domain ownership verified.', 'tetapi' ),
 	'not_yet'        => __( 'Not verified yet — the DNS record or well-known file was not found. Try again in a minute.', 'tetapi' ),
@@ -20,9 +20,9 @@ $status_messages = array(
 <div class="wrap tetapi-settings">
 	<h1><?php esc_html_e( 'TETA+PI', 'tetapi' ); ?></h1>
 
-	<?php if ( $status_msg && isset( $status_messages[ $status_msg ] ) ) : ?>
+	<?php if ( $status_msg && isset( $tetapi_status_messages[ $status_msg ] ) ) : ?>
 		<div class="notice <?php echo 'verified' === $status_msg ? 'notice-success' : 'notice-info'; ?>">
-			<p><?php echo esc_html( $status_messages[ $status_msg ] ); ?></p>
+			<p><?php echo esc_html( $tetapi_status_messages[ $status_msg ] ); ?></p>
 		</div>
 	<?php endif; ?>
 
@@ -54,9 +54,9 @@ $status_messages = array(
 					<?php else : ?>
 						<select id="tetapi_entity_id" name="tetapi_entity_id">
 							<option value=""><?php esc_html_e( '— choose —', 'tetapi' ); ?></option>
-							<?php foreach ( $businesses as $business ) : ?>
-								<option value="<?php echo esc_attr( $business['id'] ); ?>" <?php selected( $entity_id, $business['id'] ); ?>>
-									<?php echo esc_html( $business['name'] ); ?>
+							<?php foreach ( $businesses as $tetapi_business ) : ?>
+								<option value="<?php echo esc_attr( $tetapi_business['id'] ); ?>" <?php selected( $entity_id, $tetapi_business['id'] ); ?>>
+									<?php echo esc_html( $tetapi_business['name'] ); ?>
 								</option>
 							<?php endforeach; ?>
 						</select>
