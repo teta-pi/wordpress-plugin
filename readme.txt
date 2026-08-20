@@ -49,7 +49,8 @@ Learn more at [tetapi.dev](https://tetapi.dev).
 = Does this plugin send any data to third parties? =
 
 The plugin only talks to `api.tetapi.dev`, the TETA+PI API, using the API key
-you provide. No data is sent anywhere else.
+you provide. No data is sent anywhere else. See "External services" below
+for exactly what is sent and when.
 
 = Do I need a TETA+PI account? =
 
@@ -71,6 +72,36 @@ Premium isn't for sale yet. TetaPi occasionally gives out free redeemable
 codes to early users, e.g. as a thank-you for a social-media shoutout. If you
 have one, enter it under Settings > TETA+PI > Premium to unlock it on your
 site.
+
+== External services ==
+
+This plugin connects to `api.tetapi.dev`, the TETA+PI API. It is operated by
+TetaPi GmbH, the same company that develops this plugin, and is required for
+the plugin's core functionality: connecting your site to your TETA+PI
+entity, proving domain ownership, and displaying your trust badge.
+
+What is sent, and when:
+
+* When you save your Personal API Key under Settings > TETA+PI, that key is
+  sent to `GET /businesses` to list the entities it can access. The key is
+  stored encrypted at rest (using your site's own WordPress salts), not in
+  plain text.
+* When you click "Start verification" or "Check now", your site's domain
+  (auto-detected from your site URL) and your chosen entity ID are sent to
+  `POST /businesses/{id}/verify/domain/start` and
+  `POST /businesses/{id}/verify/domain/check` respectively, to prove you
+  control the domain.
+* Whenever the `[tetapi_badge]` shortcode or the "TETA+PI Badge" widget is
+  displayed on any page, your connected entity's slug is sent to the public,
+  unauthenticated `GET /businesses/by-slug/{slug}/public` endpoint to fetch
+  your badge data. This response is cached for 15 minutes (WordPress
+  transient) to limit requests. No visitor-identifying data is sent — every
+  visitor triggers the same request for the same public entity data.
+
+No data is sent to any other third party.
+
+Terms of Service: https://tetapi.dev/terms
+Privacy Policy: https://tetapi.dev/privacy
 
 == Screenshots ==
 
