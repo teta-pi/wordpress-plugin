@@ -23,9 +23,12 @@ class Tetapi_Plugin {
 	private function __construct() {
 		register_activation_hook( TETAPI_PLUGIN_FILE, array( 'Tetapi_Domain', 'activate' ) );
 		register_deactivation_hook( TETAPI_PLUGIN_FILE, array( 'Tetapi_Domain', 'deactivate' ) );
+		register_activation_hook( TETAPI_PLUGIN_FILE, array( 'Tetapi_Agent', 'activate' ) );
+		register_deactivation_hook( TETAPI_PLUGIN_FILE, array( 'Tetapi_Agent', 'deactivate' ) );
 
 		new Tetapi_Settings();
 		new Tetapi_Domain();
 		new Tetapi_Badge();
+		new Tetapi_Agent();
 	}
 }

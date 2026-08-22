@@ -1,14 +1,14 @@
 === TETA+PI ===
 Contributors: tetapi
-Tags: trust, verification, badge, domain verification, security
+Tags: trust, verification, badge, ai agents, llms.txt
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Connect your WordPress site to a TETA+PI verified entity, prove domain ownership, and display a trust badge.
+Connect your WordPress site to a TETA+PI verified entity, prove domain ownership, and make your site readable by AI agents — not just human visitors.
 
 == Description ==
 
@@ -22,6 +22,12 @@ This plugin lets a site owner:
   easier) directly from the WordPress admin.
 * Display a verified-entity badge anywhere via the `[tetapi_badge]` shortcode
   or the "TETA+PI Badge" widget.
+* Make the site agent-readable: once connected, the plugin adds a
+  machine-readable JSON-LD block to every page's `<head>`, and serves
+  `/.well-known/agent.json`, `/.well-known/agent-card.json` and `/llms.txt`
+  from your own domain — so AI agents and crawlers (including ones that
+  don't execute JavaScript) can read your verified-entity data directly,
+  not just see a visual badge.
 
 This release is 100% free — every feature above is fully functional with no
 payment required. Two premium modules are planned for later: **Module #1
@@ -73,6 +79,15 @@ codes to early users, e.g. as a thank-you for a social-media shoutout. If you
 have one, enter it under Settings > TETA+PI > Premium to unlock it on your
 site.
 
+= Does this plugin help with AI/agent discoverability, not just a visual badge? =
+
+Yes. Once your entity is connected, the plugin adds a `schema.org` JSON-LD
+block to every page's `<head>`, and serves `/.well-known/agent.json`,
+`/.well-known/agent-card.json` and `/llms.txt` on your own domain — real
+structured data an AI agent can read directly, without needing to parse the
+visible badge text or execute any JavaScript. Before an entity is connected,
+none of this is served (no default/placeholder data — those URLs 404).
+
 == External services ==
 
 This plugin connects to `api.tetapi.dev`, the TETA+PI API. It is operated by
@@ -97,6 +112,12 @@ What is sent, and when:
   your badge data. This response is cached for 15 minutes (WordPress
   transient) to limit requests. No visitor-identifying data is sent — every
   visitor triggers the same request for the same public entity data.
+* On every page load (for the JSON-LD block) and whenever
+  `/.well-known/agent.json`, `/.well-known/agent-card.json` or `/llms.txt`
+  is requested on your site, your connected entity's ID is sent to the
+  public, unauthenticated `GET /wk/{entity_id}/*` endpoints to fetch
+  agent-readable data about your entity. Also cached for 15 minutes. No
+  visitor-identifying data is sent.
 
 No data is sent to any other third party.
 
@@ -112,6 +133,14 @@ Privacy Policy: https://tetapi.dev/privacy
 
 == Changelog ==
 
+= 1.1.0 =
+* New: agent-readable output. A `schema.org` JSON-LD block is now added to
+  every page's `<head>` once your entity is connected, and the plugin serves
+  `/.well-known/agent.json`, `/.well-known/agent-card.json` and `/llms.txt`
+  on your own domain, proxied from TETA+PI's agent-readable API and cached
+  for 15 minutes. Nothing is served for a site that hasn't connected an
+  entity yet.
+
 = 1.0.1 =
 * Fix: domain ownership verification could fail even with a correct
   well-known file, because WordPress redirects the verification URL to
@@ -124,6 +153,11 @@ Privacy Policy: https://tetapi.dev/privacy
   badge shortcode + widget, Premium module teasers + free promo-code redeem.
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+Adds agent-readable JSON-LD + /.well-known/agent.json, agent-card.json,
+and /llms.txt — real structured data for AI agents, not just a visual
+badge. No action needed if you're already connected.
 
 = 1.0.1 =
 Fixes domain verification (via well-known file) failing on default
