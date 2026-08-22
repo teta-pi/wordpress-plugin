@@ -1,6 +1,6 @@
 === TETA+PI ===
 Contributors: tetapi
-Tags: trust, verification, badge, ai agents, llms.txt
+Tags: trust, verification, badge, ai agents, llms.txt, ai agent discoverability, aeo, geo
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -28,6 +28,9 @@ This plugin lets a site owner:
   from your own domain — so AI agents and crawlers (including ones that
   don't execute JavaScript) can read your verified-entity data directly,
   not just see a visual badge.
+
+Makes your site discoverable and verifiable by AI agents, LLMs and answer
+engines (AEO/GEO) — not just search engines.
 
 This release is 100% free — every feature above is fully functional with no
 payment required. Two premium modules are planned for later: **Module #1
@@ -78,6 +81,16 @@ Premium isn't for sale yet. TetaPi occasionally gives out free redeemable
 codes to early users, e.g. as a thank-you for a social-media shoutout. If you
 have one, enter it under Settings > TETA+PI > Premium to unlock it on your
 site.
+
+= Does this help with AI/LLM discoverability (AEO/GEO)? =
+
+Yes. AEO (Answer Engine Optimization) and GEO (Generative Engine
+Optimization) are about being findable and verifiable inside AI-generated
+answers, not just ranked in a search results page. This plugin's JSON-LD,
+`/.well-known/agent.json`, `agent-card.json` and `/llms.txt` are exactly
+that: real, structured, machine-readable proof of who you are that an LLM
+or AI agent can read directly — the same category of signal as `robots.txt`
+or a sitemap, but for agents instead of search crawlers.
 
 = Does this plugin help with AI/agent discoverability, not just a visual badge? =
 
