@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       TETA+PI
  * Plugin URI:        https://tetapi.dev
- * Description:       Connect this site to a TETA+PI verified entity, prove domain ownership, and display a trust badge.
+ * Description:       Connect this site to a TETA+PI verified entity, prove domain ownership, and make it readable by AI agents — not just a visual badge.
  * Version:           1.1.0
  * Requires at least: 5.8
  * Requires PHP:      7.4
