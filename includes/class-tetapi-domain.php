@@ -17,8 +17,24 @@ class Tetapi_Domain {
 		add_action( 'init', array( __CLASS__, 'register_rewrite_rule' ) );
 		add_filter( 'query_vars', array( $this, 'add_query_var' ) );
 		add_action( 'template_redirect', array( $this, 'maybe_serve_verify_file' ) );
+		add_filter( 'redirect_canonical', array( $this, 'skip_canonical_redirect' ) );
 		add_action( 'admin_post_tetapi_domain_start', array( $this, 'handle_start' ) );
 		add_action( 'admin_post_tetapi_domain_check', array( $this, 'handle_check' ) );
+	}
+
+	/**
+	 * WordPress's default redirect_canonical() 301s this path to add a
+	 * trailing slash (it doesn't recognize the rewrite endpoint as a real
+	 * page). The API's verifier deliberately does not follow redirects
+	 * (SSRF hardening — a caller-controlled domain must not be able to
+	 * redirect it elsewhere), so that redirect makes the check see an
+	 * empty body and never find the token. Skip it for this one path.
+	 */
+	public function skip_canonical_redirect( $redirect_url ) {
+		if ( get_query_var( self::QUERY_VAR ) ) {
+			return false;
+		}
+		return $redirect_url;
 	}
 
 	public static function register_rewrite_rule() {

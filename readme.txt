@@ -4,7 +4,7 @@ Tags: trust, verification, badge, domain verification, security
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,11 +112,22 @@ Privacy Policy: https://tetapi.dev/privacy
 
 == Changelog ==
 
+= 1.0.1 =
+* Fix: domain ownership verification could fail even with a correct
+  well-known file, because WordPress redirects the verification URL to
+  add a trailing slash and the verifier does not follow redirects
+  (by design, to prevent SSRF). The plugin no longer lets WordPress
+  redirect that one URL.
+
 = 1.0.0 =
 * Initial release: settings/connect page, domain ownership verification,
   badge shortcode + widget, Premium module teasers + free promo-code redeem.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Fixes domain verification (via well-known file) failing on default
+permalink settings. Update if "Check now" kept saying not verified.
 
 = 1.0.0 =
 Initial release.
