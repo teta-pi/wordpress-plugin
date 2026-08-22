@@ -32,6 +32,38 @@ class Tetapi_Api {
 	}
 
 	/**
+	 * Agent-readable proxy file (docs/universal-tag.md Part B) — public, no
+	 * auth. Returns the raw body + upstream content-type rather than decoded
+	 * JSON, since one of the three files (llms.txt) isn't JSON at all.
+	 *
+	 * @return array{body: string, content_type: string}|WP_Error
+	 */
+	public static function get_wk_file( $entity_id, $filename ) {
+		$url      = TETAPI_WK_BASE . '/' . rawurlencode( $entity_id ) . '/' . $filename;
+		$response = wp_remote_get(
+			$url,
+			array(
+				'timeout' => 8,
+				'headers' => array( 'Accept' => '*/*' ),
+			)
+		);
+
+		if ( is_wp_error( $response ) ) {
+			return $response;
+		}
+
+		$code = wp_remote_retrieve_response_code( $response );
+		if ( 200 !== $code ) {
+			return new WP_Error( 'tetapi_wk_not_found', __( 'Agent data not available.', 'tetapi' ), array( 'status' => $code ) );
+		}
+
+		return array(
+			'body'         => wp_remote_retrieve_body( $response ),
+			'content_type' => wp_remote_retrieve_header( $response, 'content-type' ),
+		);
+	}
+
+	/**
 	 * Domain ownership, step 1 — request a token + instructions.
 	 *
 	 * @return array|WP_Error
