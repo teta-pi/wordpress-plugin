@@ -4,7 +4,7 @@ Tags: trust, verification, badge, ai agents, llms.txt, ai agent discoverability,
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,10 @@ Privacy Policy: https://tetapi.dev/privacy
 4. The "TETA+PI Badge" widget added to a sidebar.
 
 == Changelog ==
+
+= 1.1.1 =
+* Docs: sync the plugin's wp-admin description with the readme's
+  agent-readable positioning. No functional change.
 
 = 1.1.0 =
 * New: agent-readable output. A `schema.org` JSON-LD block is now added to

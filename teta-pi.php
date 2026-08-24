@@ -3,7 +3,7 @@
  * Plugin Name:       TETA+PI
  * Plugin URI:        https://tetapi.dev
  * Description:       Connect this site to a TETA+PI verified entity, prove domain ownership, and make it readable by AI agents — not just a visual badge.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            TETA+PI
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'TETAPI_VERSION', '1.1.0' );
+define( 'TETAPI_VERSION', '1.1.1' );
 define( 'TETAPI_PLUGIN_FILE', __FILE__ );
 define( 'TETAPI_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'TETAPI_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
