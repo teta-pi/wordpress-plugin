@@ -1,5 +1,7 @@
 # TETA+PI WordPress Plugin — Plan
 
+[![Plugin Check](https://github.com/teta-pi/wordpress-plugin/actions/workflows/check.yml/badge.svg)](https://github.com/teta-pi/wordpress-plugin/actions/workflows/check.yml)
+
 Task 12.1 (direction 12, wordpress), free-launch copy pass in 12.2. Connects
 a WordPress site to a TETA+PI entity (`api.tetapi.dev`), proves domain
 ownership, and displays the resulting trust badge. Launched 100% free —
