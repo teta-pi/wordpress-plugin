@@ -2,12 +2,12 @@
 
 This repo is one component of TETA+PI (Trust Infrastructure for Digital
 Entities), extracted from the platform monorepo 2026-07-14 (see
-[decisions.md](https://github.com/teta-pi/infra/blob/main/docs/decisions.md)
-in `teta-pi/infra` for the original split plan — this repo was the one
-component "noted, not gated" for a later cutover, now done).
+`docs/decisions.md` in the private `teta-pi/infra` repo for the original split
+plan — this repo was the one component "noted, not gated" for a later
+cutover, now done).
 
-**Canonical docs, roadmap, changelog, and coding rules live in
-[`teta-pi/infra`](https://github.com/teta-pi/infra)** — read `docs/api.md`
+**Canonical docs, roadmap, changelog, and coding rules live in the private
+`teta-pi/infra` repo** — read `docs/api.md`
 and `docs/verification-rework.md` there before touching this repo. This file
 is a thin pointer plus plugin-specific rules; do not duplicate cross-cutting
 rules here.

@@ -9,8 +9,8 @@ premium modules are teaser-only, unlockable solely via an owner-gifted promo
 code (no payment, see § Premium).
 
 Server-side (`teta-pi/api`, `teta-pi/web`, `teta-pi/mcp`) is untouched — this
-plugin is a pure API client using existing endpoints ([`docs/api.md`](https://github.com/teta-pi/infra/blob/main/docs/api.md),
-[`docs/verification-rework.md`](https://github.com/teta-pi/infra/blob/main/docs/verification-rework.md) §2 in `teta-pi/infra`).
+plugin is a pure API client using existing endpoints documented in our
+internal infrastructure docs repo (private).
 
 ## Why WordPress
 
@@ -45,7 +45,7 @@ for caching). PHP 7.4+ compatible (no enums, no readonly props, no `match`).
 ## Data flow
 
 1. **Connect** — owner pastes their `pk_live_…` personal API key
-   ([`docs/api.md`](https://github.com/teta-pi/infra/blob/main/docs/api.md) Auth). Plugin calls `GET /businesses` with that key as
+   (see the API's own auth docs). Plugin calls `GET /businesses` with that key as
    Bearer to list the user's owned entities, owner picks one, we store
    `entity_id` + `entity_slug` + the key (encrypted at rest via WP's
    `AUTH_KEY` salt, not plaintext) in `wp_options`.
@@ -126,6 +126,5 @@ existing `api.tetapi.dev` client.
 
 - Any change to `teta-pi/api`, `teta-pi/web`, `teta-pi/mcp`.
 - Actual premium license validation / payment processing.
-- Document-upload verification (not implemented server-side yet, per
-  [`docs/verification-rework.md`](https://github.com/teta-pi/infra/blob/main/docs/verification-rework.md) §2).
+- Document-upload verification (not implemented server-side yet).
 - Cron-based auto re-verification (server capacity constraint).
